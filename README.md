@@ -38,3 +38,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Gotta change date to time along x axis, remove grid lines, make the graph beautiful add gradient ig
+
+## Add drag and drop functionality somehow
+
+## Maintain a recently viewed list through localStorage
+
+## Add loaders at all places wherever required
+
+## Add dynamic data at the explore page
+
+## Add caching of API data
+
+## Create the single coin page
+
+## Include Recently Searched Items also

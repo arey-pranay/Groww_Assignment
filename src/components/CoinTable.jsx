@@ -17,15 +17,14 @@ export default function CoinTable({ coins }) {
           </tr>
         </thead>
         <tbody>
-          {console.log(coins)}
           {coins.map((coin) => (
             <tr key={coin.id} className="text-center">
               <td className="py-2 px-4 border-b flex items-center">
-                <img
-                  src={coin.image}
+                {/* <img
+                  // src={coin.image}
                   alt={coin.name}
                   className="w-6 h-6 mr-2"
-                />
+                /> */}
                 {coin.name}
               </td>
               <td className="py-2 px-4 border-b">{coin.market_cap}</td>

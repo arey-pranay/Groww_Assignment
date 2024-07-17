@@ -1,6 +1,4 @@
-// components/Watchlist.jsx
 export default function Watchlist() {
-  // Example data for Watchlist
   const watchlistData = [
     {
       token: "BNB",

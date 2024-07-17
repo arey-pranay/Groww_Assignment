@@ -1,6 +1,4 @@
-// components/TrendingMarket.jsx
 export default function TrendingMarket() {
-  // Example data for Trending Market
   const trendingMarketData = [
     {
       token: "BNB",

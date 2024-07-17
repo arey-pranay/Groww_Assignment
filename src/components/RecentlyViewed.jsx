@@ -1,6 +1,4 @@
-// components/RecentlyViewed.jsx
 export default function RecentlyViewed() {
-  // Example data for Recently Viewed
   const recentlyViewedData = [
     {
       token: "BNB",

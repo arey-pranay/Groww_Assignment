@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 const ThemeToggle = () => {
   const [theme, setTheme] = useState("light");
 
@@ -25,12 +24,26 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button
-      onClick={toggleTheme}
-      className="bg-secondary-light dark:bg-secondary-dark text-white py-2 px-4 rounded"
-    >
-      {theme === "light" ? "Dark Mode" : "Light Mode"}
-    </button>
+    <>
+      <div
+        onClick={toggleTheme}
+        className={`${
+          theme === "light" ? "bg-white  " : "bg-black"
+        } flex cursor-pointer w-16 h-8 px-2 rounded-2xl py-0.5 justify-center items-center transition-all duration-500`}
+      >
+        <div
+          className={`${
+            theme === "light"
+              ? " -translate-x-2  rounded-full"
+              : "translate-x-4 "
+          } w-8 h-6   transition-all duration-500 flex`}
+        >
+          <div className={`${theme === "light" ? "flex" : "hidden"} `}>🌄</div>
+
+          <div className={`${theme === "light" ? "hidden" : "block"}`}>🌃 </div>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -1,11 +1,14 @@
 import { useRouter } from "next/router";
-import { getCryptoDetails } from "../../services/cryptoService";
+import {
+  fetchCoinData,
+  fetchMarketCapData,
+  getCryptoDetails,
+} from "../../services/cryptoService";
 import Header from "../../components/Header";
 
 const CryptoDetails = ({ crypto }) => {
   const router = useRouter();
   const { id } = router.query;
-  // alert(id);
   if (!crypto) {
     return <div>Loading...</div>;
   }
@@ -15,8 +18,7 @@ const CryptoDetails = ({ crypto }) => {
       <Header />
       <main className="p-4">
         <h1>{crypto.name}</h1>
-        <p>Current Price: ${crypto.market_data.current_price.usd}</p>
-        {/* Add more details and charts as needed */}
+        {/* <p>Current Price: ${crypto.market_data.current_price.usd}</p> */}
       </main>
     </div>
   );
@@ -24,8 +26,8 @@ const CryptoDetails = ({ crypto }) => {
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
-  const crypto = await getCryptoDetails(id);
-
+  const crypto = await fetchCoinData(id);
+  // console.log(crypto);
   return {
     props: {
       crypto,

@@ -10,3 +10,35 @@ html {
 html.dark {
   @apply bg-background-dark text-text-dark;
 }
+/* Footer.css */
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.accordion-header {
+  /* background-color: #f0f0f0; */
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+.accordion-content.open {
+  max-height: 400px; /* Adjust the max-height as needed */
+}
