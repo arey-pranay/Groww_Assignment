@@ -1,0 +1,12 @@
+/* globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply bg-background-light text-text-light;
+}
+
+html.dark {
+  @apply bg-background-dark text-text-dark;
+}
