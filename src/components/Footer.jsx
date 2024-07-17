@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import "./Footer.css"; // Import your CSS file for styling
 
 const Footer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,10 +8,12 @@ const Footer = () => {
   };
 
   return (
-    <div className="footer-container">
-      <div className="accordion-header bg-primary-light dark:bg-primary-dark ">
-        <div className="flex justify-between items-center">
-          <div>If you wanna be cool like Batman, Use CryptoNight! </div>
+    <div className="w-full h-fit footer-container " onClick={toggleAccordion}>
+      <div className="accordion-header p-4 bg-primary-light dark:bg-primary-dark ">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center">
+          <div className="font-mono">
+            If you wanna be cool like Batman, Use CryptoNight!{" "}
+          </div>
           <div>
             <span
               onClick={toggleAccordion}
@@ -28,20 +29,20 @@ const Footer = () => {
       </div>
       <div
         className={`font-mono accordion-content bg-primary-dark dark:bg-primary-light ${
-          isOpen ? "open" : "opacity-0"
+          isOpen ? "open p-4" : "opacity-0"
         }`}
       >
         🦸‍♂️ : Hey, batsy ! What is this cool crypto trading and information
-        software everyone is talking about lately. <br />
-        🦇 : Haha, trust me you don&apos;t wanna know, you&apos;re gonna regret
-        it. <br />
-        🦸‍♂️: No, please. Tell me, it is so good, see even you&apos;re using it to
-        earn so much. <br />
-        🦇: Haha you asked for it. The tool that is making me super cool and
+        software by Groww that everyone is talking about lately. <br />
+        🦇 : Haha, trust me sups, you don&apos;t wanna know, you&apos;re gonna
+        regret it. <br />
+        🦸‍♂️: No, please. Tell me, it is so good, you have created so much wealth
+        with it . <br />
+        🦇: Well, you asked for it. The tool that is making me super cool and
         super rich is called: CryptoNight ! <br />
         🦸‍♂️: *Dies* {"  "}
         <span className="text-center mx-auto font-bold">
-          (Coz CryptoNight == Kryptonite, lol. Anyways, use CryptoNight and Be
+          (Coz CryptoNight == Kryptonite, uh. Anyways, use CryptoNight and Be
           Batman. Thank You So Much for reading.)
         </span>
       </div>

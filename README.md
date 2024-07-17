@@ -39,18 +39,24 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## Gotta change date to time along x axis, remove grid lines, make the graph beautiful add gradient ig
+## Add drag and drop functionality somehow ✅
 
-## Add drag and drop functionality somehow
+## Add dynamic data at the explore page ✅
+
+## Create the single coin page ✅
 
 ## Maintain a recently viewed list through localStorage
 
 ## Add loaders at all places wherever required
 
-## Add dynamic data at the explore page
+## Include Recently Searched Items also
 
 ## Add caching of API data
 
-## Create the single coin page
+## Add a unified search bar
 
-## Include Recently Searched Items also
+## Gotta change date to time along x axis, remove grid lines, make the graph beautiful add gradient ig. Fix the scale of theHome page graph so that the curves/slopes are more clear
+
+### Add some nice animations
+
+### Duplicate Items should not be added to wishlist

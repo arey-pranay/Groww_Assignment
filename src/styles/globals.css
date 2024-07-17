@@ -16,12 +16,12 @@ html.dark {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .accordion-header {
   /* background-color: #f0f0f0; */
-  padding: 10px;
+  /* padding: 10px; */
   cursor: pointer;
   font-weight: bold;
   width: 100%;
@@ -35,10 +35,23 @@ html.dark {
   transition: max-height 0.3s ease-out;
   width: 100%;
   text-align: left;
-  padding: 10px;
+  /* padding: 10px; */
   background-color: #ffffff;
 }
 
 .accordion-content.open {
   max-height: 400px; /* Adjust the max-height as needed */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-slow {
+  animation: rotate 20s linear infinite;
 }

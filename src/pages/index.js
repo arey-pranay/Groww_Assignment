@@ -9,6 +9,8 @@ import Watchlist from "@/components/WatchList";
 import RecentlyViewed from "../components/RecentlyViewed";
 import TrendingMarket from "../components/TrendingMarket";
 import Footer from "@/components/Footer";
+import TrashBin from "@/components/TrashBin";
+import Link from "next/link";
 
 export default function Home({ topCryptos, btc, eth, ltc }) {
   const dispatch = useDispatch();
@@ -35,20 +37,30 @@ export default function Home({ topCryptos, btc, eth, ltc }) {
       <Header />
       <main className="p-4">
         <section className="mb-8">
-          <h1 className="text-2xl font-bold mb-4">Global Market Cap</h1>
+          <div className="flex justify-between">
+            {" "}
+            <h1 className="text-2xl font-bold mb-4">Global Market Cap</h1>
+            <Link href="/explore">
+              <button className="p-2 rounded border-2 border-primary-light dark:border-primary-dark hover:text-white  hover:bg-primary-light dark:hover:bg-primary-dark ">
+                Explore New Cryptos
+              </button>
+            </Link>
+          </div>
+
           <GlobalMarketCapChart data={chartData} />
         </section>
-        <section className="grid grid-cols-3 gap-4">
+        <section className="grid grid-cols-1 sm:grid-cols-3 sm:gap-4">
           <div className="col-span-2">
             <h1 className="text-2xl font-bold mb-4">Top Cryptocurrencies</h1>
             <CoinList coins={topCryptos} />
           </div>
-          <div>
-            <h1 className="text-2xl font-bold mb-4">Watchlist</h1>
+          <div className=" ">
+            <h1 className="text-2xl font-bold mb-4">WatchList</h1>
             <Watchlist />
+            <TrashBin />
           </div>
         </section>
-        <section className="grid grid-cols-3 gap-4 mt-8">
+        <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
           <div className="col-span-2">
             <h1 className="text-2xl font-bold mb-4">Trending Market</h1>
             <TrendingMarket />

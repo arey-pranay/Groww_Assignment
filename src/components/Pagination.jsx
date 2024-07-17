@@ -12,7 +12,7 @@ export default function Pagination({
   }
 
   const totalPages = pageNumbers.length;
-  const maxPageNumbersToShow = 10;
+  const maxPageNumbersToShow = 5;
   const currentPageGroup = Math.ceil(currentPage / maxPageNumbersToShow);
   const firstPageInGroup = (currentPageGroup - 1) * maxPageNumbersToShow + 1;
   const lastPageInGroup = Math.min(
@@ -24,15 +24,15 @@ export default function Pagination({
   const nextPageGroup = () => paginate(lastPageInGroup + 1);
 
   return (
-    <nav className="mt-4 max-w-screen-md">
-      <ul className="flex justify-center space-x-2">
+    <nav className="mt-8 w-full ">
+      <ul className="flex justify-between w-full gap-12">
         {firstPageInGroup > 1 && (
-          <li className=" text-gray-700 cursor-pointer">
+          <li className=" text-white cursor-pointer ">
             <a
               onClick={prevPageGroup}
-              className="px-4 py-2 border border-gray-300 rounded"
+              className="bg-primary-dark hover:bg-primary-light  px-4 py-2 border border-gray-300 rounded"
             >
-              Prev
+              {"<-"}Prev
             </a>
           </li>
         )}
@@ -42,24 +42,28 @@ export default function Pagination({
             <li
               key={number}
               className={`${
-                currentPage === number ? "text-blue-500" : "text-gray-700"
-              } cursor-pointer`}
+                currentPage === number ? "font-bold " : "dark:text-gray-100"
+              } cursor-pointer `}
             >
               <a
                 onClick={() => paginate(number)}
-                className="px-4 py-2 border border-gray-300 rounded"
+                className={` px-4 py-2 border border-gray-300 rounded ${
+                  currentPage === number
+                    ? "font-bold bg-primary-dark border-4"
+                    : "hover:bg-primary-light"
+                }  `}
               >
                 {number}
               </a>
             </li>
           ))}
         {lastPageInGroup < totalPages && (
-          <li className="text-gray-700 cursor-pointer">
+          <li className=" text-white cursor-pointer">
             <a
               onClick={nextPageGroup}
-              className="px-4 py-2 border border-gray-300 rounded"
+              className=" bg-primary-dark hover:bg-primary-light px-4 py-2 border border-gray-300 rounded"
             >
-              Next
+              Next {"->"}
             </a>
           </li>
         )}

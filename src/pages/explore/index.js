@@ -5,6 +5,7 @@ import CoinTable from "@/components/CoinTable";
 import Pagination from "@/components/Pagination";
 import Watchlist from "@/components/WatchList";
 import RecentlyViewed from "@/components/RecentlyViewed";
+import TrashBin from "@/components/TrashBin";
 
 export default function Explore() {
   const [coins, setCoins] = useState([]);
@@ -15,8 +16,9 @@ export default function Explore() {
   useEffect(() => {
     const fetchCoins = async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/coins/list?x_cg_demo_api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+        `${process.env.NEXT_PUBLIC_API_URL}/coins/markets?vs_currency=usd&per_page=200&x_cg_demo_api_key=${process.env.NEXT_PUBLIC_API_KEY}`
       );
+      console.log(response.data);
       setCoins(response.data);
     };
     fetchCoins();
@@ -41,14 +43,14 @@ export default function Explore() {
           <input
             type="text"
             placeholder="Search..."
-            className="mb-4 p-2 border border-gray-300 rounded"
+            className="mb-4 p-2 border border-gray-300 rounded text-black"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="col-span-2">
               <CoinTable coins={currentCoins} />
-              <div className="max-w-screen-sm">
+              <div className="">
                 <Pagination
                   coinsPerPage={coinsPerPage}
                   totalCoins={filteredCoins.length}
@@ -60,6 +62,7 @@ export default function Explore() {
             <div>
               <h2 className="text-xl font-bold mb-4">Watchlist</h2>
               <Watchlist />
+              <TrashBin />
               <h2 className="text-xl font-bold mb-4 mt-8">Recently Viewed</h2>
               <RecentlyViewed />
             </div>
