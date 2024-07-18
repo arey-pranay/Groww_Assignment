@@ -5,7 +5,11 @@ const watchlistSlice = createSlice({
   initialState: [],
   reducers: {
     addToWatchlist: (state, action) => {
-      state.push(action.payload);
+      const { id } = action.payload;
+      const existingCoinIndex = state.findIndex((coin) => coin.id === id);
+      if (existingCoinIndex === -1) {
+        state.push(action.payload);
+      }
     },
     removeFromWatchlist: (state, action) => {
       return state.filter((coin) => coin.id !== action.payload.id);

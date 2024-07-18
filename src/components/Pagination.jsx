@@ -25,7 +25,7 @@ export default function Pagination({
 
   return (
     <nav className="mt-8 w-full ">
-      <ul className="flex justify-between w-full gap-12">
+      <ul className="flex justify-between w-full sm:gap-12">
         {firstPageInGroup > 1 && (
           <li className=" text-white cursor-pointer ">
             <a

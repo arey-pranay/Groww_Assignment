@@ -23,7 +23,19 @@ export default function Watchlist() {
         isOver ? "bg-purple-900" : "bg-primary-light dark:bg-primary-dark"
       }`}
     >
-      <h2 className="text-xl font-bold mb-4">Drag items here to add them</h2>
+      <div className="flex justify-between">
+        {watchlist.length > 0 ? (
+          <>
+            <h2 className="text-xl font-bold mb-4">Cryptocurrency </h2>
+            <h2 className="text-xl font-bold mb-4"> Price </h2>
+          </>
+        ) : (
+          <h2 className="text-sm">
+            Drop a currency here, to add it to your watchlist.{" "}
+          </h2>
+        )}
+      </div>
+
       <ul>
         {watchlist.map((coin) => (
           <WatchlistItem key={coin.id} coin={coin} />

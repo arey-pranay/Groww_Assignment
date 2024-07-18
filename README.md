@@ -45,18 +45,24 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Create the single coin page ✅
 
-## Maintain a recently viewed list through localStorage or Redux
+## Maintain a recently viewed list through localStorage or Redux ✅
+
+## Gotta change date to time along x axis, remove grid lines, make the graph beautiful add gradient ig. Fix the scale of theHome page graph so that the curves/slopes are more clear ✅
+
+## Implement the Recently Viewed Component Designing and Table Data ✅
+
+## Implement the Trending Market logic and component table
+
+## Add a unified search bar in the header itself
 
 ## Include Recently Searched Items also
-
-## Add a unified search bar
 
 ## Add loaders at all places wherever required
 
 ## Add caching of API data
 
-## Gotta change date to time along x axis, remove grid lines, make the graph beautiful add gradient ig. Fix the scale of theHome page graph so that the curves/slopes are more clear
-
 ### Add some nice animations
+
+### Button to add to wishlist
 
 ### Duplicate Items should not be added to wishlist

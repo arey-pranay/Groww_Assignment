@@ -1,4 +1,3 @@
-// slices/recentlyViewedSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const recentlyViewedSlice = createSlice({

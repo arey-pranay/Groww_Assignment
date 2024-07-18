@@ -65,7 +65,7 @@ const GlobalMarketCapChart = () => {
         type: "time",
         time: {
           unit: "day",
-          tooltipFormat: "PP", // Default locale format
+          tooltipFormat: "PP",
         },
         title: {
           display: true,

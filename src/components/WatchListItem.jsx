@@ -9,6 +9,9 @@ export default function WatchlistItem({ coin }) {
       isDragging: !!monitor.isDragging(),
     }),
   }));
+  const formatDecimalNumber = (num, digit) => {
+    return parseFloat(num).toFixed(digit).toLocaleString("en-US");
+  };
 
   return (
     <div
@@ -17,9 +20,24 @@ export default function WatchlistItem({ coin }) {
         isDragging ? "bg-gray-200" : "bg-white"
       }`}
     >
-      <div className="flex items-center">
-        <img src={coin.image} alt={coin.name} className="w-6 h-6 mr-2" />
-        <p className="dark:text-black"> {coin.name}</p>
+      <div className="flex items-center text-center justify-between">
+        {/* {console.log(coin)}{" "} */}
+        <div className="flex gap-2">
+          <img src={coin.image} alt={coin.name} className="w-6 h-6 mr-2" />
+          <p className="dark:text-black"> {coin.name}</p>
+        </div>
+        <p className="dark:text-black">
+          {" "}
+          $ {formatDecimalNumber(coin.current_price, 3)}
+        </p>
+        {/* {coin.roi ? (
+          <p className="dark:text-black">
+            {" "}
+            {formatDecimalNumber(coin.roi?.percentage, 2)}%
+          </p>
+        ) : (
+          <p className="text-black">ROI not Known</p>
+        )} */}
       </div>
     </div>
   );

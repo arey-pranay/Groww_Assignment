@@ -62,14 +62,12 @@ export const fetchCoinData = async (coinId) => {
   );
   return response.data;
 };
-// Function to get the Unix timestamp for a given date
 const getUnixTimestamp = (date) => Math.floor(date.getTime() / 1000);
 
-// Function to fetch market cap data for a single cryptocurrency
 export const fetchSingleCryptoMarketCapData = async (cryptoId) => {
   const now = new Date();
-  const startOfDay = new Date(now.setHours(0, 0, 0, 0)); // Start of the current day
-  const oneDayAgo = new Date(startOfDay.getTime() - 24 * 60 * 60 * 1000); // One day ago
+  const startOfDay = new Date(now.setHours(0, 0, 0, 0));
+  const oneDayAgo = new Date(startOfDay.getTime() - 24 * 60 * 60 * 1000);
 
   const startTimestamp = getUnixTimestamp(oneDayAgo);
   const endTimestamp = getUnixTimestamp(startOfDay);
@@ -77,6 +75,6 @@ export const fetchSingleCryptoMarketCapData = async (cryptoId) => {
   const response = await axios.get(
     `https://api.coingecko.com/api/v3/coins/${cryptoId}/market_chart/range?x_cg_demo_api_key=${process.env.NEXT_PUBLIC_API_KEY}&vs_currency=usd&from=${startTimestamp}&to=${endTimestamp}`
   );
-  console.log(response.data.market_caps);
+  // console.log(response.data.market_caps);
   return response.data.market_caps;
 };

@@ -18,7 +18,7 @@ export default function Explore() {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/coins/markets?vs_currency=usd&per_page=200&x_cg_demo_api_key=${process.env.NEXT_PUBLIC_API_KEY}`
       );
-      console.log(response.data);
+      // console.log(response.data);
       setCoins(response.data);
     };
     fetchCoins();
@@ -48,7 +48,7 @@ export default function Explore() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div className="col-span-2">
+            <div className="col-span-2 ">
               <CoinTable coins={currentCoins} />
               <div className="">
                 <Pagination

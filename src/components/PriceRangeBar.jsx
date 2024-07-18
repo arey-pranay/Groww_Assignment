@@ -1,5 +1,4 @@
 import React from "react";
-// import { FaStar } from "react-icons/fa";
 
 const PriceRangeBar = ({ currentPrice, highPrice, lowPrice }) => {
   const getPercentage = (current, low, high) => {
@@ -10,7 +9,7 @@ const PriceRangeBar = ({ currentPrice, highPrice, lowPrice }) => {
   const percentage = getPercentage(currentPrice, lowPrice, highPrice);
 
   return (
-    <div className="w-full my-10">
+    <div className="w-full my-5">
       <div className="relative h-4 bg-gray-300 rounded-full">
         <div
           className="absolute top-0 h-4 bg-green-500 rounded-full"

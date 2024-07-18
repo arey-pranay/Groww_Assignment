@@ -11,13 +11,13 @@ const SingleCryptoMarketCapChart = ({ cryptoId, cryptoName }) => {
       const marketCapData = await fetchSingleCryptoMarketCapData(cryptoId);
       const formatData = (data) => {
         return data.map(([timestamp, value]) => ({
-          x: new Date(timestamp).toLocaleDateString(), // Format the date as a string
+          x: new Date(timestamp).toLocaleDateString(),
           y: value,
         }));
       };
 
       setData(formatData(marketCapData));
-      console.log(data);
+      // console.log(data);
     };
 
     fetchData();
@@ -30,7 +30,7 @@ const SingleCryptoMarketCapChart = ({ cryptoId, cryptoName }) => {
         label: `${cryptoName} Market Cap`,
         data: data.map((entry) => entry.y),
         fill: false,
-        borderColor: "#ff9900", // Example color
+        borderColor: "#ff9900",
         backgroundColor: "#ff9900",
         tension: 0.1,
       },

@@ -11,6 +11,7 @@ import TrendingMarket from "../components/TrendingMarket";
 import Footer from "@/components/Footer";
 import TrashBin from "@/components/TrashBin";
 import Link from "next/link";
+import TrendingCryptos from "@/components/TrendingCryptos";
 
 export default function Home({ topCryptos, btc, eth, ltc }) {
   const dispatch = useDispatch();
@@ -37,12 +38,15 @@ export default function Home({ topCryptos, btc, eth, ltc }) {
       <Header />
       <main className="p-4">
         <section className="mb-8">
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             {" "}
             <h1 className="text-2xl font-bold mb-4">Global Market Cap</h1>
             <Link href="/explore">
-              <button className="p-2 rounded border-2 border-primary-light dark:border-primary-dark hover:text-white  hover:bg-primary-light dark:hover:bg-primary-dark ">
+              <button className="hidden sm:block p-2 rounded border-2 border-primary-light dark:border-primary-dark dark:hover:text-white bg-primary-light dark:bg-primary-dark hover:bg-transparent dark:hover:bg-transparent ">
                 Explore New Cryptos
+              </button>
+              <button className="block sm:hidden p-2 rounded border-2 border-primary-light dark:border-primary-dark dark:hover:text-white bg-primary-light dark:bg-primary-dark hover:bg-transparent dark:hover:bg-transparent ">
+                Explore
               </button>
             </Link>
           </div>
@@ -55,18 +59,22 @@ export default function Home({ topCryptos, btc, eth, ltc }) {
             <CoinList coins={topCryptos} />
           </div>
           <div className=" ">
-            <h1 className="text-2xl font-bold mb-4">WatchList</h1>
+            <h1 className="text-2xl font-bold mt-10 mb-5 sm:my-2">WatchList</h1>
             <Watchlist />
             <TrashBin />
           </div>
         </section>
         <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
           <div className="col-span-2">
-            <h1 className="text-2xl font-bold mb-4">Trending Market</h1>
-            <TrendingMarket />
+            <h1 className="text-2xl font-bold mt-10 mb-5 sm:my-2">
+              Trending Market
+            </h1>
+            <TrendingCryptos />
           </div>
           <div>
-            <h1 className="text-2xl font-bold mb-4">Recently Viewed</h1>
+            <h1 className="text-2xl font-bold mt-10 mb-5 sm:my-2">
+              Recently Viewed
+            </h1>
             <RecentlyViewed />
           </div>
         </section>

@@ -1,5 +1,4 @@
-// pages/crypto/[id].js
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { fetchCoinData } from "../../services/cryptoService";
@@ -11,6 +10,7 @@ import PriceRangeBar from "../../components/PriceRangeBar";
 import LinksComponent from "../../components/LinksComponent";
 import SingleCryptoMarketCapChart from "../../components/SingleCryptoMarketCapChart";
 import { addRecentlyViewed } from "@/store/slices/recentlyViewedSlice";
+import { addToWatchlist } from "@/store/slices/watchlistSlice";
 
 const CryptoDetails = ({ crypto }) => {
   const router = useRouter();
@@ -22,7 +22,7 @@ const CryptoDetails = ({ crypto }) => {
       dispatch(addRecentlyViewed(crypto));
     }
   }, [crypto, dispatch]);
-
+  // console.log(crypto);
   if (!crypto) {
     return <div>Loading...</div>;
   }
@@ -33,12 +33,25 @@ const CryptoDetails = ({ crypto }) => {
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
-    return new Date(dateString).toLocaleDateString("en-GB", options); // "en-GB" for DD/MM/YYYY format
+    return new Date(dateString).toLocaleDateString("en-GB", options);
   };
 
   const getInitialSentences = (text, count) => {
     const sentences = text.split(".").filter(Boolean);
     return sentences.slice(0, count).join(". ") + ".";
+  };
+  const [notAdded, setNotAdded] = useState(true);
+  const addToWatchlistFunc = () => {
+    if (notAdded)
+      dispatch(
+        addToWatchlist({
+          id: crypto.id,
+          image: crypto.image.small,
+          name: crypto.name,
+          current_price: crypto.market_data.current_price.usd,
+        })
+      );
+    setNotAdded(false);
   };
 
   return (
@@ -47,14 +60,20 @@ const CryptoDetails = ({ crypto }) => {
       <div className="container mx-auto p-4">
         <div className="flex flex-col items-center shadow-lg rounded-lg p-6">
           <div className="flex justify-between items-center w-full mb-12">
+            <h1 className="hidden sm:block text-3xl font-bold mt-4 hover:tracking-widest transition-all duration-150">
+              {crypto.name}
+            </h1>
             <img
               src={crypto.image.large}
               alt={crypto.name}
               className="w-20 h-20 rotate-slow"
             />
-            <h1 className="text-3xl font-bold mt-4 hover:tracking-widest transition-all duration-150">
-              {crypto.name}
-            </h1>
+            <button
+              onClick={addToWatchlistFunc}
+              className="rounded  font-semibold p-3 text-white bg-primary-light dark:bg-primary-light hover:bg-primary-dark hover:dark:bg-primary-dark  hover-border-2 border-primary-dark"
+            >
+              {notAdded ? "Add to Watchlist ⌚" : "Successfully Added"}
+            </button>
           </div>
           <SingleCryptoMarketCapChart
             cryptoId={crypto.id}
@@ -69,6 +88,25 @@ const CryptoDetails = ({ crypto }) => {
           <p className="dark:text-gray-50 text-gray-800">
             {getInitialSentences(crypto.description.en, 4)}
           </p>
+          <div className="flex w-full my-7 justify-between">
+            <div className="">
+              <h1>
+                Total Supply: {formatNumber(crypto.market_data.total_supply)}
+              </h1>
+              <h1>
+                Circulating Supply:{" "}
+                {formatNumber(crypto.market_data.circulating_supply)}
+              </h1>
+            </div>
+            <div className="">
+              <h1>
+                Positive Votes 👍🏼: {crypto.sentiment_votes_up_percentage}%
+              </h1>
+              <h1>
+                Negative Votes 👎🏼: {crypto.sentiment_votes_down_percentage}%
+              </h1>
+            </div>
+          </div>
           <PriceRangeBar
             currentPrice={crypto.market_data.current_price.usd}
             highPrice={crypto.market_data.high_24h.usd}
