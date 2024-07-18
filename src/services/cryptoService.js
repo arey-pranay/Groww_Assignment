@@ -6,7 +6,7 @@ export const fetchMarketCapData = async (coinId) => {
     {
       params: {
         vs_currency: "usd",
-        days: "1",
+        days: "30",
       },
     }
   );

@@ -45,15 +45,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Create the single coin page ✅
 
-## Maintain a recently viewed list through localStorage
-
-## Add loaders at all places wherever required
+## Maintain a recently viewed list through localStorage or Redux
 
 ## Include Recently Searched Items also
 
-## Add caching of API data
-
 ## Add a unified search bar
+
+## Add loaders at all places wherever required
+
+## Add caching of API data
 
 ## Gotta change date to time along x axis, remove grid lines, make the graph beautiful add gradient ig. Fix the scale of theHome page graph so that the curves/slopes are more clear
 

@@ -1,59 +1,25 @@
-export default function RecentlyViewed() {
-  const recentlyViewedData = [
-    {
-      token: "BNB",
-      lastPrice: "$41,263.00",
-      change: "+35.74%",
-      marketCap: "$784.393M",
-    },
-    {
-      token: "Bitcoin",
-      lastPrice: "$41,263.00",
-      change: "+35.74%",
-      marketCap: "$784.393M",
-    },
-    {
-      token: "Ethereum",
-      lastPrice: "$41,263.00",
-      change: "+35.74%",
-      marketCap: "$784.393M",
-    },
-    {
-      token: "Terra",
-      lastPrice: "$41,263.00",
-      change: "+35.74%",
-      marketCap: "$784.393M",
-    },
-    {
-      token: "Cardano",
-      lastPrice: "$41,263.00",
-      change: "+35.74%",
-      marketCap: "$784.393M",
-    },
-  ];
+// components/RecentlyViewed.js
+import { useSelector } from "react-redux";
+
+const RecentlyViewed = () => {
+  const recentlyViewed = useSelector((state) => state.recentlyViewed);
 
   return (
-    <div>
-      <div className="space-y-4">
-        {recentlyViewedData.map((coin) => (
-          <div
-            key={coin.token}
-            className="flex justify-between p-4 border rounded-lg shadow-sm"
-          >
-            <div className="flex items-center">
-              <div className="mr-4">{/* Token Icon */}</div>
-              <div>
-                <h2 className="font-bold">{coin.token}</h2>
-                <p className="text-sm">{coin.lastPrice}</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <p className="text-green-500">{coin.change}</p>
-              <p>{coin.marketCap}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="recently-viewed">
+      <h2>Recently Viewed</h2>
+      {recentlyViewed.length > 0 ? (
+        <ul>
+          {recentlyViewed.map((crypto) => (
+            <li key={crypto.id}>
+              <a href={`/crypto/${crypto.id}`}>{crypto.name}</a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No recently viewed cryptocurrencies.</p>
+      )}
     </div>
   );
-}
+};
+
+export default RecentlyViewed;
