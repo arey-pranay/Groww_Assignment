@@ -18,7 +18,7 @@ export default function TrashBin() {
     <div
       ref={drop}
       className={`p-4 border rounded mt-2 ${
-        isOver ? "bg-red-800 dark:bg-red-500" : "bg-red-200 dark:bg-red-800"
+        isOver ? "bg-red-800 dark:bg-red-500" : "bg-red-400 dark:bg-red-800"
       }`}
     >
       <h2 className="text-xl font-bold mb-4">Trash Bin 🥫</h2>

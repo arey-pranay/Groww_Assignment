@@ -31,7 +31,7 @@ const CoinRow = ({ coin }) => {
     >
       <td className="py-3 px-4 border-b">{coin.market_cap_rank}</td>
 
-      <td className="py-3 px-4 border-b">
+      <td className="py-3 px-4 border-b hover:underline">
         <Link href={`/crypto/${coin.id}`}>
           <h1 className="flex items-center space-x-2">
             <img src={coin.image} alt={coin.name} className="w-6 h-6" />

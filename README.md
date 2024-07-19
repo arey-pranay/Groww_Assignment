@@ -39,6 +39,14 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+## Find out relevant libraries for graph ✅
+
+## Find out appropriate API Key ✅
+
+## Create Static Layout for each component ✅
+
+## Initial setup of routes ✅
+
 ## Add drag and drop functionality somehow ✅
 
 ## Add dynamic data at the explore page ✅
@@ -51,11 +59,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Implement the Recently Viewed Component Designing and Table Data ✅
 
-## Implement the Trending Market logic and component table
+## Implement the Trending Market logic and component table ✅
 
-## Add a unified search bar in the header itself
+## Add a unified search bar in the header itself ✅
 
-## Include Recently Searched Items also
+## Include Recently Searched Items also (create a slice in redux for this)
 
 ## Add loaders at all places wherever required
 
@@ -63,6 +71,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ### Add some nice animations
 
-### Button to add to wishlist
+### Button to add to wishlist ✅
 
-### Duplicate Items should not be added to wishlist
+### Duplicate Items should not be added to wishlist ✅
+
+### Make graphs responsive to screen sizes

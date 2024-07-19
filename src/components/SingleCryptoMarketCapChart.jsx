@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
 import { fetchSingleCryptoMarketCapData } from "../services/cryptoService";
+import { Chart, TimeScale } from "chart.js";
+import "chartjs-adapter-date-fns";
+
+Chart.register(TimeScale);
 
 const SingleCryptoMarketCapChart = ({ cryptoId, cryptoName }) => {
   const [data, setData] = useState([]);
@@ -11,24 +15,22 @@ const SingleCryptoMarketCapChart = ({ cryptoId, cryptoName }) => {
       const marketCapData = await fetchSingleCryptoMarketCapData(cryptoId);
       const formatData = (data) => {
         return data.map(([timestamp, value]) => ({
-          x: new Date(timestamp).toLocaleDateString(),
+          x: new Date(timestamp),
           y: value,
         }));
       };
 
       setData(formatData(marketCapData));
-      // console.log(data);
     };
 
     fetchData();
   }, [cryptoId]);
 
   const chartData = {
-    labels: data?.map((entry) => entry.x),
     datasets: [
       {
-        label: `${cryptoName} Market Cap`,
-        data: data.map((entry) => entry.y),
+        label: `${cryptoName} Market Cap (Last 24 Hours)`,
+        data: data,
         fill: false,
         borderColor: "#ff9900",
         backgroundColor: "#ff9900",
@@ -37,10 +39,40 @@ const SingleCryptoMarketCapChart = ({ cryptoId, cryptoName }) => {
     ],
   };
 
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        type: "time",
+        time: {
+          unit: "hour", // You can change the unit to 'minute', 'hour', 'day', etc.
+          tooltipFormat: "PPpp", // This formats the tooltip to show date and time
+        },
+        title: {
+          display: true,
+          text: "Time",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Market Cap",
+        },
+        ticks: {
+          callback: function (value) {
+            return `${(value / 1e6).toFixed(2)} M`;
+          },
+        },
+      },
+    },
+  };
+
   return (
-    <div className="bg-background-light w-full  dark:bg-background-dark p-6 rounded shadow">
-      {/* <h2 className="text-xl font-semibold mb-4">{cryptoName} Market Cap</h2> */}
-      <Line data={chartData} />
+    <div className="bg-background-light w-full dark:bg-background-dark p-6 rounded shadow">
+      <div className="relative h-64 sm:h-80 lg:h-96">
+        <Line data={chartData} options={options} />
+      </div>
     </div>
   );
 };

@@ -65,8 +65,8 @@ export const fetchCoinData = async (coinId) => {
 const getUnixTimestamp = (date) => Math.floor(date.getTime() / 1000);
 
 export const fetchSingleCryptoMarketCapData = async (cryptoId) => {
-  const now = new Date();
-  const startOfDay = new Date(now.setHours(0, 0, 0, 0));
+  const startOfDay = new Date();
+  // const startOfDay = new Date(now.setHours(0, 0, 0, 0));
   const oneDayAgo = new Date(startOfDay.getTime() - 24 * 60 * 60 * 1000);
 
   const startTimestamp = getUnixTimestamp(oneDayAgo);

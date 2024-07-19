@@ -45,7 +45,7 @@ export default function Home({ topCryptos, btc, eth, ltc }) {
               <button className="hidden sm:block p-2 rounded border-2 border-primary-light dark:border-primary-dark dark:hover:text-white bg-primary-light dark:bg-primary-dark hover:bg-transparent dark:hover:bg-transparent ">
                 Explore New Cryptos
               </button>
-              <button className="block sm:hidden p-2 rounded border-2 border-primary-light dark:border-primary-dark dark:hover:text-white bg-primary-light dark:bg-primary-dark hover:bg-transparent dark:hover:bg-transparent ">
+              <button className="mb-4 text-sm block sm:hidden p-1 rounded border-2 border-primary-light dark:border-primary-dark dark:hover:text-white bg-primary-light dark:bg-primary-dark hover:bg-transparent dark:hover:bg-transparent ">
                 Explore
               </button>
             </Link>
@@ -67,7 +67,7 @@ export default function Home({ topCryptos, btc, eth, ltc }) {
         <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
           <div className="col-span-2">
             <h1 className="text-2xl font-bold mt-10 mb-5 sm:my-2">
-              Trending Market
+              Trending Market <span className="text-xs">(acc to volume)</span>
             </h1>
             <TrendingCryptos />
           </div>

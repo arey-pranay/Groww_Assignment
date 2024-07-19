@@ -42,8 +42,8 @@ export default function Explore() {
           <h1 className="text-2xl font-bold mb-4">Explore Cryptocurrencies</h1>
           <input
             type="text"
-            placeholder="Search..."
-            className="mb-4 p-2 border border-gray-300 rounded text-black"
+            placeholder="Type and see the table change"
+            className="mb-4 w-1/3 p-2 border border-gray-300 rounded text-black"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
