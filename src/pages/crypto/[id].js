@@ -11,6 +11,7 @@ import LinksComponent from "../../components/LinksComponent";
 import SingleCryptoMarketCapChart from "../../components/SingleCryptoMarketCapChart";
 import { addRecentlyViewed } from "@/store/slices/recentlyViewedSlice";
 import { addToWatchlist } from "@/store/slices/watchlistSlice";
+import Loading from "@/components/Loading";
 
 const CryptoDetails = ({ crypto }) => {
   const router = useRouter();
@@ -53,10 +54,27 @@ const CryptoDetails = ({ crypto }) => {
       );
     setNotAdded(false);
   };
+  const [loading, setLoading] = useState(false);
+  // const router = useRouter();
+  useEffect(() => {
+    const handleStart = () => setLoading(true);
+    const handleComplete = () => setLoading(false);
 
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleComplete);
+      router.events.off("routeChangeError", handleComplete);
+    };
+  }, [router]);
   return (
     <div className="overflow-hidden">
       <Header />
+      {loading && <Loading />}
+
       <div className="container mx-auto p-4">
         <div className="flex flex-col items-center shadow-lg rounded-lg p-6">
           <div className="flex justify-between items-center w-full mb-12">
@@ -72,7 +90,7 @@ const CryptoDetails = ({ crypto }) => {
               onClick={addToWatchlistFunc}
               className="rounded  font-semibold p-3 text-white bg-primary-light dark:bg-primary-light hover:bg-primary-dark hover:dark:bg-primary-dark  hover-border-2 border-primary-dark"
             >
-              {notAdded ? "Add to Watchlist ⌚" : "Successfully Added"}
+              {notAdded ? "Add to Watchlist " : "Successfully Added"}
             </button>
           </div>
           <SingleCryptoMarketCapChart
@@ -130,7 +148,7 @@ const CryptoDetails = ({ crypto }) => {
           </div>
         </div>
       </div>
-      <div className="my-4">
+      <div className="my-8">
         <LinksComponent crypto={crypto} />
       </div>
       {/* <div className="flex justify-around p-10">

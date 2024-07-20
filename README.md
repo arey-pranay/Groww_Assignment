@@ -63,11 +63,19 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Add a unified search bar in the header itself ✅
 
-## Include Recently Searched Items also (create a slice in redux for this)
+## Include Recently Searched Items also (create a slice in redux for this) ✅
 
-## Add loaders at all places wherever required
+## Add loaders at all places wherever required ✅
 
-## Add caching of API data
+## Add caching of API data ❌
+
+## Pub-Sub mechanism ❌
+
+## Server-side rendering
+
+## URL Without Groww keyword
+
+## Remove log statements ✅
 
 ### Add some nice animations
 
@@ -75,4 +83,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ### Duplicate Items should not be added to wishlist ✅
 
-### Make graphs responsive to screen sizes
+### Make graphs responsive to screen sizes ✅
+
+### Remove Graphs' grids/lines

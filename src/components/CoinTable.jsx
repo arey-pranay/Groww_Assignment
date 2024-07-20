@@ -1,8 +1,10 @@
 import React from "react";
 import CoinRow from "./CoinRow";
-
+import { Radio } from "react-loader-spinner";
+import Image from "next/image";
+import customLoader from "@/components/assets/customLoader.svg";
 const CoinTable = ({ coins }) => {
-  return (
+  return coins.length > 0 ? (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white dark:bg-transparent border border-gray-200 rounded-lg">
         <thead>
@@ -36,6 +38,20 @@ const CoinTable = ({ coins }) => {
           ))}
         </tbody>
       </table>
+    </div>
+  ) : (
+    <div className="h-full w-full flex justify-center items-center">
+      {" "}
+      {/* <Radio
+        visible={true}
+        height="200"
+        width="200"
+        color="#3d0066"
+        ariaLabel="radio-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      /> */}
+      <Image src={customLoader} />
     </div>
   );
 };

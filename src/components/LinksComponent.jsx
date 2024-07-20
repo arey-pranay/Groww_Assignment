@@ -10,7 +10,7 @@ import {
 
 const LinksComponent = ({ crypto }) => {
   return (
-    <div className="p-2 w-full  sm:w-[95%] mx-auto border border-gray-500 rounded-lg shadow-md">
+    <div className="p-2 w-full  sm:w-[95%] mx-auto  border-gray-500 rounded-lg shadow-lg">
       <h2 className="text-2xl font-mono dark:text-white font-semibold text-gray-800 mb-6 text-center">
         Relevant Links
       </h2>

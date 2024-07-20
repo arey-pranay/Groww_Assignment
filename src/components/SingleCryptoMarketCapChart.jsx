@@ -46,8 +46,8 @@ const SingleCryptoMarketCapChart = ({ cryptoId, cryptoName }) => {
       x: {
         type: "time",
         time: {
-          unit: "hour", // You can change the unit to 'minute', 'hour', 'day', etc.
-          tooltipFormat: "PPpp", // This formats the tooltip to show date and time
+          unit: "hour",
+          tooltipFormat: "PPpp",
         },
         title: {
           display: true,

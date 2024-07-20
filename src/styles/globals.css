@@ -40,7 +40,7 @@ html.dark {
 }
 
 .accordion-content.open {
-  max-height: 400px; /* Adjust the max-height as needed */
+  max-height: 400px;
 }
 
 @keyframes rotate {

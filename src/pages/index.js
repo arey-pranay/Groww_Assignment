@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setCryptos } from "../store/slices/cryptoSlice";
 import { getCryptos } from "../services/cryptoService";
 import Header from "../components/Header";
@@ -12,6 +12,8 @@ import Footer from "@/components/Footer";
 import TrashBin from "@/components/TrashBin";
 import Link from "next/link";
 import TrendingCryptos from "@/components/TrendingCryptos";
+import { useRouter } from "next/router";
+import Loading from "@/components/Loading";
 
 export default function Home({ topCryptos, btc, eth, ltc }) {
   const dispatch = useDispatch();
@@ -32,11 +34,28 @@ export default function Home({ topCryptos, btc, eth, ltc }) {
     eth: formatChartData(eth),
     ltc: formatChartData(ltc),
   };
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  useEffect(() => {
+    const handleStart = () => setLoading(true);
+    const handleComplete = () => setLoading(false);
 
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleComplete);
+    router.events.on("routeChangeError", handleComplete);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleComplete);
+      router.events.off("routeChangeError", handleComplete);
+    };
+  }, [router]);
   return (
     <div>
       <Header />
-      <main className="p-4">
+      {loading && <Loading />}
+
+      <main className="p-4 mb-10">
         <section className="mb-8">
           <div className="flex justify-between items-center">
             {" "}
@@ -55,7 +74,10 @@ export default function Home({ topCryptos, btc, eth, ltc }) {
         </section>
         <section className="grid grid-cols-1 sm:grid-cols-3 sm:gap-4">
           <div className="col-span-2">
-            <h1 className="text-2xl font-bold mb-4">Top Cryptocurrencies</h1>
+            <h1 className="text-2xl font-bold mb-4">
+              Top Cryptocurrencies{" "}
+              <span className="text-xs">(acc to market cap.)</span>
+            </h1>
             <CoinList coins={topCryptos} />
           </div>
           <div className=" ">
@@ -67,7 +89,10 @@ export default function Home({ topCryptos, btc, eth, ltc }) {
         <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
           <div className="col-span-2">
             <h1 className="text-2xl font-bold mt-10 mb-5 sm:my-2">
-              Trending Market <span className="text-xs">(acc to volume)</span>
+              Trending Market{" "}
+              <span className="text-xs">
+                (acc to volume, but a bit less updated)
+              </span>
             </h1>
             <TrendingCryptos />
           </div>

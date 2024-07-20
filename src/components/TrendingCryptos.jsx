@@ -47,43 +47,53 @@ const TrendingCryptos = () => {
         </thead>
         <tbody className="bg-white divide-y divide-gray-200 dark:bg-transparent">
           {/* {console.log(cryptos)} */}
-          {cryptos.map((crypto) => (
-            <tr key={crypto.id} className="bg-white dark:bg-gray-700">
-              <td className="px-6 py-4 whitespace-nowrap">
-                <Link href={`/crypto/${crypto.id}`}>
-                  <div className="flex hover:underline items-center">
-                    <div className="flex-shrink-0">
-                      <img
-                        src={crypto.image}
-                        alt={crypto.name}
-                        className="hidden sm:block w-10 h-10 rounded-full"
-                      />
-                    </div>
-                    <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-900 dark:text-white">
-                        {crypto.symbol.toUpperCase()}
+          {cryptos.length > 0 ? (
+            cryptos.map((crypto) => (
+              <tr key={crypto.id} className="bg-white dark:bg-gray-700">
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <Link href={`/crypto/${crypto.id}`}>
+                    <div className="flex hover:underline items-center">
+                      <div className="flex-shrink-0">
+                        <img
+                          src={crypto.image}
+                          alt={crypto.name}
+                          className="hidden sm:block w-10 h-10 rounded-full"
+                        />
+                      </div>
+                      <div className="ml-4">
+                        <div className="text-sm font-medium text-gray-900 dark:text-white">
+                          {crypto.symbol.toUpperCase()}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                {formatNumber(crypto.total_volume)}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                ${formatDecimalNumber(crypto.current_price, 2)}
-              </td>
-              <td
-                className={`hidden sm:block px-6 py-4 whitespace-nowrap text-sm ${
-                  crypto.price_change_percentage_24h > 0
-                    ? "text-green-600"
-                    : "text-red-600"
-                } dark:text-gray-400`}
-              >
-                {formatDecimalNumber(crypto.price_change_percentage_24h, 2)}%
-              </td>
+                  </Link>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                  {formatNumber(crypto.total_volume)}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                  ${formatDecimalNumber(crypto.current_price, 2)}
+                </td>
+                <td
+                  className={`hidden sm:block px-6 py-4 whitespace-nowrap text-sm ${
+                    crypto.price_change_percentage_24h > 0
+                      ? "text-green-600"
+                      : "text-red-600"
+                  } `}
+                >
+                  {formatDecimalNumber(crypto.price_change_percentage_24h, 2)}%
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              {" "}
+              <td>Just</td>
+              <td>a min, </td>
+              <td>the APIs</td>
+              <td>are busy</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

@@ -5,13 +5,19 @@ import darkLogo from "@/components/assets/DarkLogo.gif";
 import lightLogo from "@/components/assets/LightLogo.gif";
 import Link from "next/link";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addRecentlyClickedItem } from "@/store/slices/recentlyClickedSlice";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
-  const [recentlyClicked, setRecentlyClicked] = useState([]);
+  const [searchClicked, setSearchClicked] = useState(false);
   const searchRef = useRef(null);
+  const dispatch = useDispatch();
+  const recentlyClicked = useSelector((state) => state.recentlyClicked);
+  const router = useRouter();
 
   const handleSearch = async (e) => {
     const value = e.target.value;
@@ -26,12 +32,16 @@ const Header = () => {
         coin.name.toLowerCase().includes(value.toLowerCase())
       );
 
-      setResults(filteredResults.slice(0, 5)); // Show top 5 results
+      setResults(filteredResults.slice(0, 5));
       setShowResults(true);
+      setSearchClicked(true);
     } else {
-      // If query is empty, show recently clicked items
-      setResults(recentlyClicked.slice(0, 5));
-      setShowResults(true);
+      if (searchClicked) {
+        setResults(recentlyClicked.slice(0, 5));
+        setShowResults(true);
+      } else {
+        setShowResults(false);
+      }
     }
   };
 
@@ -42,6 +52,7 @@ const Header = () => {
         e.target.closest(".search-input") === null
       ) {
         setShowResults(false);
+        setSearchClicked(false);
       }
     }
   };
@@ -54,11 +65,9 @@ const Header = () => {
   }, []);
 
   const handleResultClick = (result) => {
-    // Add clicked result to recently clicked items
-    setRecentlyClicked([result, ...recentlyClicked.slice(0, 4)]);
-    console.log(recentlyClicked);
-    // Navigate to result's link
-    window.location.href = `/crypto/${result.id}`;
+    dispatch(addRecentlyClickedItem(result));
+
+    router.push(`/crypto/${result.id}`);
   };
 
   return (
@@ -88,21 +97,20 @@ const Header = () => {
             type="text"
             value={query}
             onChange={handleSearch}
-            className="search-input p-2 rounded border border-gray-300 text-black dark:text-white dark:bg-gray-800"
+            onClick={() => setShowResults(true)}
+            className="outline-none search-input p-2 rounded border border-gray-300 text-black dark:text-white dark:bg-gray-800"
             placeholder="Search..."
           />
           {showResults && results.length > 0 && (
             <ul className="search-results absolute mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded shadow-lg w-full max-h-60 overflow-y-auto z-10">
               {results.map((result) => (
                 <li key={result.id}>
-                  {/* <Link href={`/crypto/${result.id}`}> */}
                   <h1
-                    className="block text-black dark:text-white px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700"
+                    className="block text-black dark:text-white px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer"
                     onClick={() => handleResultClick(result)}
                   >
                     {result.name}
                   </h1>
-                  {/* </Link> */}
                 </li>
               ))}
             </ul>
@@ -116,6 +124,7 @@ const Header = () => {
           type="text"
           value={query}
           onChange={handleSearch}
+          onClick={() => setShowResults(true)}
           className="p-2 w-full rounded border border-gray-300 text-black dark:text-white dark:bg-gray-800"
           placeholder="Search..."
         />
@@ -123,19 +132,33 @@ const Header = () => {
           <ul className="absolute mt-1 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded shadow-lg w-full max-h-60 overflow-y-auto z-10">
             {results.map((result) => (
               <li key={result.id}>
+                <h1
+                  className="block text-black dark:text-white px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer"
+                  onClick={() => handleResultClick(result)}
+                >
+                  {result.name}
+                </h1>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      {/* {searchClicked && query.length === 0 && (
+        <div className="p-4 bg-background-light dark:bg-background-dark rounded shadow">
+          <h2 className="text-lg font-semibold mb-2">Recent Searches</h2>
+          <ul>
+            {recentlyClicked.slice(0, 5).map((result) => (
+              <li key={result.id}>
                 <Link href={`/crypto/${result.id}`}>
-                  <h1
-                    className="block text-black dark:text-white px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700"
-                    onClick={() => handleResultClick(result)}
-                  >
+                  <h1 className="block text-black dark:text-white px-4 py-2 hover:bg-gray-200 dark:hover:bg-gray-700">
                     {result.name}
                   </h1>
                 </Link>
               </li>
             ))}
           </ul>
-        )}
-      </div>
+        </div>
+      )} */}
     </div>
   );
 };

@@ -19,7 +19,7 @@ const HomeCoinRow = ({ coin }) => {
     <tr
       ref={drag}
       key={coin.id}
-      className={`dark:bg-gray-700 text-left hover:scale-95 duration-200 ${
+      className={`dark:bg-gray-700 text-gray-900 dark:text-white text-left hover:scale-95 duration-200 ${
         isDragging ? "opacity-50" : ""
       }`}
     >

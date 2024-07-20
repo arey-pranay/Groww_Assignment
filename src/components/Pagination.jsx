@@ -49,7 +49,7 @@ export default function Pagination({
                 onClick={() => paginate(number)}
                 className={` px-4 py-2 border border-gray-300 rounded ${
                   currentPage === number
-                    ? "font-bold bg-primary-dark border-4"
+                    ? "font-bold text-white bg-primary-dark border-4"
                     : "hover:bg-primary-light"
                 }  `}
               >
