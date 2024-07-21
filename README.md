@@ -72,42 +72,42 @@ The documentation provided with the submission is much more extensive, interacti
 
 ----- End Of Documentation ------
 
-# Developer's Personal Draft/Checklist
+# Developer's Personal Draft/Checklist (in no particular order)
 
-## Find out relevant libraries for graph ✅
+- Find out relevant libraries for graph ✅
 
-## Find out appropriate API Key ✅
+- Find out appropriate API Key ✅
 
-## Create Static Layout for each component ✅
+- Create Static Layout for each component ✅
 
-## Initial setup of routes ✅
+- Initial setup of routes ✅
 
-## Add drag and drop functionality somehow ✅
+- Add drag and drop functionality somehow ✅
 
-## Add dynamic data at the explore page ✅
+- Add dynamic data at the explore page ✅
 
-## Create the single coin page ✅
+- Create the single coin page ✅
 
-## Maintain a recently viewed list through localStorage or Redux ✅
+- Maintain a recently viewed list through localStorage or Redux ✅
 
-## Gotta change date to time along x axis, remove grid lines, make the graph beautiful add gradient ig. Fix the scale of theHome page graph so that the curves/slopes are more clear ✅
+- Gotta change date to time along x axis, remove grid lines, make the graph beautiful add gradient ig. Fix the scale of theHome page graph so that the curves/slopes are more clear ✅
 
-## Implement the Recently Viewed Component Designing and Table Data ✅
+- Implement the Recently Viewed Component Designing and Table Data ✅
 
-## Implement the Trending Market logic and component table ✅
+- Implement the Trending Market logic and component table ✅
 
-## Add a unified search bar in the header itself ✅
+- Add a unified search bar in the header itself ✅
 
-## Include Recently Searched Items also (create a slice in redux for this) ✅
+- Include Recently Searched Items also (create a slice in redux for this) ✅
 
-## Add loaders at all places wherever required ✅
+- Add loaders at all places wherever required ✅
 
-## Remove log statements ✅
+- Remove log statements ✅
 
-### Add some nice animations ✅
+- Add some nice animations ✅
 
-### Button to add to wishlist ✅
+- Button to add to wishlist ✅
 
-### Duplicate Items should not be added to wishlist ✅
+- Duplicate Items should not be added to wishlist ✅
 
-### Make graphs responsive to screen sizes ✅
+- Make graphs responsive to screen sizes ✅
