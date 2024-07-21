@@ -72,7 +72,11 @@ The documentation provided with the submission is much more extensive, interacti
 
 ----- End Of Documentation ------
 
-# Developer's Personal Draft/Checklist (in no particular order)
+##
+
+##
+
+### Developer's Personal Draft/Checklist (in no particular order)
 
 - Find out relevant libraries for graph ✅
 
