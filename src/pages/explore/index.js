@@ -59,14 +59,17 @@ export default function Explore() {
 
       <main className="p-4">
         <section className="mb-8">
-          <div className="flex justify-between mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between mb-8">
             <h1 className="text-2xl font-bold">Explore Cryptocurrencies</h1>
             <input
               type="text"
               placeholder="Type and see the table change"
-              className="w-1/3 p-2 border outline-none border-gray-300 rounded text-black"
+              className="w-full sm:w-1/3 p-2 border outline-none border-gray-300 rounded text-black"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setCurrentPage(1);
+              }}
             />
           </div>
 

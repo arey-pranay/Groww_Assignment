@@ -87,7 +87,6 @@ const TrendingCryptos = () => {
             ))
           ) : (
             <tr>
-              {" "}
               <td>Just</td>
               <td>a min, </td>
               <td>the APIs</td>

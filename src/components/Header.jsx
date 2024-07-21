@@ -76,14 +76,14 @@ const Header = () => {
         <Link href={"/"}>
           <div>
             <Image
-              alt=""
+              alt="dark logo"
               className="hidden dark:block"
               src={darkLogo}
               width={120}
               height={40}
             />
             <Image
-              alt=""
+              alt="light logo"
               className="dark:hidden"
               src={lightLogo}
               width={120}

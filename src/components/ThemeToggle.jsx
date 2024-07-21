@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    if (localStorage.theme) {
-      document.documentElement.classList.add(localStorage.theme);
-      setTheme(localStorage.theme);
-    }
+    // if (localStorage.theme) {
+    //   document.documentElement.classList.add(localStorage.theme);
+    //   setTheme(localStorage.theme);
+    // } else {
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+    // }
   }, []);
 
   const toggleTheme = () => {

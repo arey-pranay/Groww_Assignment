@@ -14,7 +14,7 @@ const Loading = () => {
         wrapperStyle={{}}
         wrapperClass=""
       /> */}
-      <Image src={logoImage} height={200} />
+      <Image src={logoImage} alt="logo Image" height={200} />
     </div>
   );
 };

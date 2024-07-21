@@ -51,7 +51,7 @@ const CoinTable = ({ coins }) => {
         wrapperStyle={{}}
         wrapperClass=""
       /> */}
-      <Image src={customLoader} />
+      <Image src={customLoader} alt="customLoader" />
     </div>
   );
 };

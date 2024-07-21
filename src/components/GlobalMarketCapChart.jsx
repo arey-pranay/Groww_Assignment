@@ -89,7 +89,12 @@ const GlobalMarketCapChart = () => {
       y: {
         ticks: {
           callback: function (value) {
-            return `${(value / 1e6).toFixed(2)} M`;
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+              return `${(value / 1e9).toFixed(2)} B`;
+            } else {
+              return `${(value / 1e6).toFixed(2)} M`;
+            }
           },
         },
         title: {
@@ -105,7 +110,7 @@ const GlobalMarketCapChart = () => {
       <div className="relative h-64 sm:h-80 md:h-96 lg:h-112 flex items-center justify-center">
         {loading ? (
           <div className="flex flex-col gap-4 items-center justify-center">
-            <Image src={customLoader} />
+            <Image src={customLoader} alt="CustomLoader" />
             <h1 className="font-bold text-primary-dark">
               Just a sec, huge data being processed
             </h1>

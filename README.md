@@ -1,43 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). -->
 
-## Getting Started
+## Cryptonight
 
-First, run the development server:
+I changed cryptonite to cryptonight as they are similar and I was unsure if I had to use the exact same name.
+The documentation provided with the submission is much more extensive, interactive and better, so kindly refer to that one for a more in-depth view.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Frontend Framework: Next.js
+- Styling: Tailwind CSS + a bit of vanilla CSS
+- State Management: Redux/Redux Toolkit
+- Deployment: Vercel
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Features
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- Homepage:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+  - Global Market Cap Chart: Displays a Line graph showing the global market cap data for 3 cryptocurrencies.
+  - Recently Viewed Cryptos: Displays whichever cryptos were recently viewed by the user. Data persistent throughout states
+  - Watchlist: Displays the contents added in the watchlist by the user by drag and drop.
+  - Top Cryptocurrencies: Displays the list of top 10 cryptocurrencies with most market cap.
+  - Trending Market: Displays Top 5 cryptocurrencies with most volume traded.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Explore Page:
 
-## Learn More
+  - Paginated Coin List/Grid: Displays a paginated list or grid of cryptocurrencies. Each page contains a specified number (20 items) of items with navigation to show more.
+  - Navigation: Clicking on a card routes the user to the product page of the selected cryptocurrency.
+  - A separately integrated search bar: Type in the queries to dynamically filter the table data based on the inputs in the search bar.
+  - Same watchlist and Recently Viewed Components with state data persistence by redux store.
+  - Option to add any cryptocurrency by dropping it into the watchlist.
 
-To learn more about Next.js, take a look at the following resources:
+- Product Page:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - Displays basic information, data, and description about the selected cryptocurrency.
+  - Shows a line graph of the cryptocurrency’s price over time.
+  - Relevant links section: To help user learn more or join a community fellow enthusiasts of that cryptocurrency.
+  - Add to watchlist button: Because drag and drop is difficult for mobile users.
+  - The viewed cryptocurrency is automatically added to recently viewed table of the webapp.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Common Header:
 
-## Deploy on Vercel
+  - Display the application name with an animated logo.
+  - Included a search bar that shows suggested cryptocurrencies as the user types.
+  - An animated original logo on the left and an animated theme toggle button on the right.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Common Footer: (extra)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  - Prompts users to try cryptonight in a fun and interesting way.
+  - Integrated a custom accordion that tells an fun dialogue to make the user feel friendly and interested in the webapp.
+
+### Extra Features
+
+- Trash bin component to drop crypto from the watchlist to remove the crypto from it.
+- Piano-like animations in the top cryptocurrencies table.
+- An animated logo original logo on the left and an animated theme toggle button on the right.
+- Custom animated loader for loading graphs and tables.
+- Custom animated logo-based loader while routing from any page to any other
+- Other minor animations like spinning crypto logo stretching heading, etc.
+- Plus other brownie features mentioned in the brownie points section.
+
+### API Integration
+
+- Used the reliable CoinGecko API to fetch real-time data and historical data.
+- Used multiple endpoints to get relavant data including “/coins/markets” , “/coins/id/market_chart” and many others.
+
+### Brownie Point Functionalities
+
+- Dynamic Theme Switching: A dynamic theme-switching feature that allows users to toggle between Light and Dark modes.
+- Search Bar with Suggestions: Integrate a feature in the search bar that displays recently searched items as suggested items.
+- Drag-and-Drop to Watchlist: Implement a drag-and-drop functionality that allows users to easily add coins to their watchlist by dragging and dropping them.
+
+----- End Of Documentation ------
+
+# Developer's Personal Draft/Checklist
 
 ## Find out relevant libraries for graph ✅
 
@@ -67,22 +102,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Add loaders at all places wherever required ✅
 
-## Add caching of API data ❌
-
-## Pub-Sub mechanism ❌
-
-## Server-side rendering
-
-## URL Without Groww keyword
-
 ## Remove log statements ✅
 
-### Add some nice animations
+### Add some nice animations ✅
 
 ### Button to add to wishlist ✅
 
 ### Duplicate Items should not be added to wishlist ✅
 
 ### Make graphs responsive to screen sizes ✅
-
-### Remove Graphs' grids/lines
